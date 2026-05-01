@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LSUIElement</key>
+	<true/>
+	<key>VoiceTranscriptionProvider</key>
+	<string>assemblyai</string>
+	<key>WorkerBaseURL</key>
+	<string>https://your-worker-name.your-subdomain.workers.dev</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>StudioMate uses your microphone so you can talk through creative work in real time.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>StudioMate needs screen access so it can point at tools and teach inside your creative apps.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>StudioMate uses speech recognition to turn your questions into guided, hands-on coaching.</string>
+</dict>
+</plist>

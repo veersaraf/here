@@ -1,0 +1,12 @@
+worker/node_modules/
+node_modules/
+/.next/
+out/
+worker/.dev.vars
+.DS_Store
+*.xcuserstate
+build/
+releases/
+.claude/
+coding-plans/
+npm-debug.log*
