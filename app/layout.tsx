@@ -18,7 +18,7 @@ const serif = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Here. | The teacher that is always here.",
   description:
-    "A screen-aware creative teacher for video editing, UI design, and Blender.",
+    "A macOS menu bar teacher that listens, sees your screen, and points you forward.",
   icons: {
     icon: "/favicon.svg",
   },
