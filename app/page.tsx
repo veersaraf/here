@@ -41,9 +41,25 @@ export default function Home() {
           </p>
         </section>
 
-        <p className="craft-line">Video editing / UI design / Blender</p>
+        <section className="focus-block" aria-label="Creative focuses">
+          <p className="focus-lead">Fine-tuned specially for</p>
+          <div className="focus-list">
+            <p>
+              <span>Video Editing</span>
+              <em>Final Cut Pro, DaVinci Resolve</em>
+            </p>
+            <p>
+              <span>Graphic Design</span>
+              <em>Blender, After Effects</em>
+            </p>
+            <p>
+              <span>UI Design</span>
+              <em>Figma</em>
+            </p>
+          </div>
+        </section>
 
-        <p className="bottom-note">less is more, doing so</p>
+        <p className="bottom-note">Less Seeing, More Doing</p>
       </div>
     </main>
   );

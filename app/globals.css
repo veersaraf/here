@@ -163,12 +163,48 @@ select {
   color: var(--muted);
 }
 
-.craft-line {
-  margin: 36px 0 0;
+.focus-block {
+  width: min(100%, 680px);
+  margin: 38px auto 0;
   text-align: center;
-  font-size: 0.82rem;
-  letter-spacing: 0.24em;
+}
+
+.focus-lead {
+  margin: 0 0 18px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--soft);
+}
+
+.focus-list {
+  display: grid;
+  gap: 10px;
+}
+
+.focus-list p {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.focus-list span {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.focus-list em {
+  font-family: var(--font-serif), serif;
+  font-size: 0.96rem;
+  font-style: italic;
   color: var(--soft);
 }
 
@@ -210,10 +246,17 @@ select {
     line-height: 1.8;
   }
 
-  .craft-line {
-    font-size: 0.74rem;
-    letter-spacing: 0.16em;
-    line-height: 1.8;
+  .focus-block {
+    margin-top: 30px;
+  }
+
+  .focus-list {
+    gap: 12px;
+  }
+
+  .focus-list p {
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .bottom-note {
