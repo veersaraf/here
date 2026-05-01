@@ -39,6 +39,9 @@ export default function Home() {
             on your screen, speaks back, and points at what to click next, so
             you can learn inside the app you are already using.
           </p>
+          <p className="github-note">
+            All download and setup details live on GitHub.
+          </p>
         </section>
 
         <section className="focus-block" aria-label="Creative focuses">

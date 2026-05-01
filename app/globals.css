@@ -163,6 +163,14 @@ select {
   color: var(--muted);
 }
 
+.github-note {
+  margin-top: 16px !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--soft) !important;
+}
+
 .focus-block {
   width: min(100%, 680px);
   margin: 38px auto 0;

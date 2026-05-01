@@ -1,31 +1,18 @@
-# StudioMate
+# Here.
 
-StudioMate is a macOS-native, screen-aware creative coach that lives in your menu bar.
+Here. is a macOS-native, screen-aware teacher that lives in your menu bar.
 
-Instead of watching a course in one window and fumbling through the work in another, you hold `Control + Option`, ask for help out loud, and StudioMate teaches you inside the tool you're already using. It can see your screen, talk back, and point directly at the next control you should use.
-
-## Landing Page
-
-A Vercel-ready landing page for the public-facing brand **Here.** now lives at the repo root using Next.js.
-
-Run it locally with:
-
-```bash
-npm install
-npm run dev
-```
-
-Then deploy the repository root to Vercel when you are ready.
+Hold `Control + Option`, ask for help out loud, and Here. teaches you inside the app you are already using. It can see your screen, talk back, and point directly at the next control you should use.
 
 ## What It's For
 
-StudioMate is tuned around three hands-on creative lanes:
+Here. is currently fine-tuned around three creative lanes:
 
-- **Video editing**: pacing, cuts, masking, keyframes, color, sound, exports
-- **UI design**: hierarchy, spacing, typography, components, auto layout, flows
-- **Blender**: modeling, modifiers, lighting, materials, cameras, renders
+- **Video editing**: Final Cut Pro, DaVinci Resolve
+- **Graphic design**: Blender, After Effects
+- **UI design**: Figma
 
-The app is meant to feel more like a live desk-side mentor than a generic chatbot.
+The goal is simple: less passive watching, more guided doing.
 
 ## Core Experience
 
@@ -35,15 +22,7 @@ The app is meant to feel more like a live desk-side mentor than a generic chatbo
 - Streams your voice to transcription
 - Sends transcript plus screenshots to the creative coach backend
 - Speaks the answer back with TTS
-- Parses `[POINT:x,y:label]` tags so the cursor buddy can fly to tools on screen
-
-## Why This Repo Exists
-
-This repo was shaped as a competition-ready project for the Handshake x OpenAI Codex Creator Challenge.
-
-The product pitch is simple:
-
-> Udemy teaches before you open the app. StudioMate teaches while you're inside it.
+- Parses `[POINT:x,y:label]` tags so the cursor companion can fly to tools on screen
 
 ## Architecture
 
@@ -54,7 +33,7 @@ The product pitch is simple:
 - **Text-to-speech**: ElevenLabs through the same Worker
 - **Overlay**: transparent cursor companion across monitors
 
-The current implementation keeps the provider stack close to the inherited source project so the product can move fast. The repo is structured so those providers can be swapped later.
+The public product name is **Here.** The current source tree still uses `StudioMate` in file and target names internally.
 
 ## Getting It Running
 
@@ -108,7 +87,7 @@ Then:
 
 ## Permissions
 
-StudioMate asks for:
+Here. asks for:
 
 - Microphone
 - Accessibility
@@ -134,4 +113,4 @@ NOTICE.md                    # attribution for the inherited MIT base
 
 ## Attribution
 
-StudioMate is a substantial derivative of [farzaa/clicky](https://github.com/farzaa/clicky), which is MIT-licensed. The original copyright notice is preserved in [LICENSE](/Users/veersaraf/Desktop/Codex/LICENSE), and a short attribution note lives in [NOTICE.md](/Users/veersaraf/Desktop/Codex/NOTICE.md).
+Here. is a substantial derivative of [farzaa/clicky](https://github.com/farzaa/clicky), which is MIT-licensed. The original copyright notice is preserved in [LICENSE](/Users/veersaraf/Desktop/Codex/LICENSE), and a short attribution note lives in [NOTICE.md](/Users/veersaraf/Desktop/Codex/NOTICE.md).
