@@ -13,7 +13,7 @@ export default function Home() {
 
           <a
             className="github-link"
-            href="https://github.com/veersaraf/HereApp"
+            href="https://github.com/veersaraf/here"
             target="_blank"
             rel="noreferrer"
             aria-label="Open GitHub repository"

@@ -19,7 +19,18 @@ struct AssemblyAIStreamingTranscriptionProviderError: LocalizedError {
 final class AssemblyAIStreamingTranscriptionProvider: BuddyTranscriptionProvider {
     /// URL for the Cloudflare Worker endpoint that returns a short-lived
     /// AssemblyAI streaming token. The real API key never leaves the server.
-    private static let tokenProxyURL = "https://your-worker-name.your-subdomain.workers.dev/transcribe-token"
+    ///
+    /// Derived from the same `WorkerBaseURL` Info.plist value used for the
+    /// `/chat` and `/tts` routes, so pointing the app at a deployed Worker
+    /// configures all three endpoints at once.
+    private static let placeholderWorkerBaseURL = "https://your-worker-name.your-subdomain.workers.dev"
+
+    private static var tokenProxyURL: String {
+        let base = AppBundleConfiguration.stringValue(forKey: "WorkerBaseURL")
+            ?? placeholderWorkerBaseURL
+        let trimmedBase = base.hasSuffix("/") ? String(base.dropLast()) : base
+        return "\(trimmedBase)/transcribe-token"
+    }
 
     let displayName = "AssemblyAI"
     let requiresSpeechRecognitionPermission = false
