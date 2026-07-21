@@ -52,8 +52,8 @@ export default function Home() {
               <em>Final Cut Pro, DaVinci Resolve</em>
             </p>
             <p>
-              <span>Graphic Design</span>
-              <em>Blender, After Effects</em>
+              <span>Blender &amp; 3D</span>
+              <em>Blender, Eevee, Cycles</em>
             </p>
             <p>
               <span>UI Design</span>

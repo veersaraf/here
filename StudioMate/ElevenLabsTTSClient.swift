@@ -2,9 +2,9 @@
 //  ElevenLabsTTSClient.swift
 //  StudioMate
 //
-//  Streams text-to-speech audio from ElevenLabs and plays it back
-//  through the system audio output. Uses the streaming endpoint so
-//  playback begins before the full audio has been generated.
+//  Fetches text-to-speech audio from ElevenLabs (via the Worker proxy)
+//  and plays it back through the system audio output. The audio is
+//  buffered fully before playback begins.
 //
 
 import AVFoundation

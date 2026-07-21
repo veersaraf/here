@@ -9,10 +9,10 @@
 	<key>WorkerBaseURL</key>
 	<string>https://your-worker-name.your-subdomain.workers.dev</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>StudioMate uses your microphone so you can talk through creative work in real time.</string>
+	<string>Here. uses your microphone so you can talk through creative work in real time.</string>
 	<key>NSScreenCaptureUsageDescription</key>
-	<string>StudioMate needs screen access so it can point at tools and teach inside your creative apps.</string>
+	<string>Here. needs screen access so it can point at tools and teach inside your creative apps.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>StudioMate uses speech recognition to turn your questions into guided, hands-on coaching.</string>
+	<string>Here. uses speech recognition to turn your questions into guided, hands-on coaching.</string>
 </dict>
 </plist>

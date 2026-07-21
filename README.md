@@ -16,7 +16,7 @@ Here. is tuned for hands-on creative work, with three specialization lanes built
 | --- | --- | --- |
 | **Video Editing** | Cuts, pacing, keyframes, masking, color, audio, export | Premiere Pro, Final Cut Pro, DaVinci Resolve, CapCut |
 | **UI Design** | Hierarchy, spacing, typography, components, flows, prototyping | Figma, Framer, Sketch |
-| **Blender / 3D** | Modeling, lighting, materials, cameras, motion, render polish | Blender, Eevee, Cycles, Geometry Nodes |
+| **Blender & 3D** | Modeling, lighting, materials, cameras, motion, render polish | Blender, Eevee, Cycles, Geometry Nodes |
 
 Each lane changes how the coach reasons about your screen — see [`StudioMate/CreativeFocus.swift`](StudioMate/CreativeFocus.swift).
 
