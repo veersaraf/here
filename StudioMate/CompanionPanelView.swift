@@ -15,6 +15,8 @@ struct CompanionPanelView: View {
         VStack(alignment: .leading, spacing: 0) {
             panelHeader
 
+            workerConfigWarning
+
             Divider()
                 .background(DS.Colors.borderSubtle)
                 .padding(.horizontal, 16)
@@ -64,7 +66,7 @@ struct CompanionPanelView: View {
                     .frame(width: 8, height: 8)
                     .shadow(color: statusDotColor.opacity(0.6), radius: 4)
 
-                Text("StudioMate")
+                Text("Here.")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(DS.Colors.textPrimary)
             }
@@ -95,6 +97,18 @@ struct CompanionPanelView: View {
     }
 
     @ViewBuilder
+    private var workerConfigWarning: some View {
+        if companionManager.workerNeedsConfiguration {
+            Text("Set WorkerBaseURL in Info.plist to your Cloudflare Worker. Chat, voice, and transcription will not work until you do.")
+                .font(.system(size: 11))
+                .foregroundColor(DS.Colors.accentText)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 8)
+        }
+    }
+
+    @ViewBuilder
     private var introSection: some View {
         if companionManager.hasCompletedOnboarding && companionManager.allPermissionsGranted {
             VStack(alignment: .leading, spacing: 6) {
@@ -113,7 +127,7 @@ struct CompanionPanelView: View {
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundColor(DS.Colors.textPrimary)
 
-                Text("StudioMate is a screen-aware creative coach built for real workflows, not passive courses.")
+                Text("Here. is a screen-aware creative coach built for real workflows, not passive courses.")
                     .font(.system(size: 11))
                     .foregroundColor(DS.Colors.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -126,7 +140,7 @@ struct CompanionPanelView: View {
                     .font(.system(size: 12, weight: .bold))
                     .foregroundColor(DS.Colors.textSecondary)
 
-                Text("Grant all four permissions below to keep using StudioMate as your cursor-side coach.")
+                Text("Grant all four permissions below to keep using Here. as your cursor-side coach.")
                     .font(.system(size: 11))
                     .foregroundColor(DS.Colors.textTertiary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -137,7 +151,7 @@ struct CompanionPanelView: View {
                     .font(.system(size: 13, weight: .bold))
                     .foregroundColor(DS.Colors.textPrimary)
 
-                Text("StudioMate only looks when you use the hotkey. It teaches by watching your screen, pointing at tools, and walking you through the next move.")
+                Text("Here. only looks when you use the hotkey. It teaches by watching your screen, pointing at tools, and walking you through the next move.")
                     .font(.system(size: 11))
                     .foregroundColor(DS.Colors.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -180,7 +194,7 @@ struct CompanionPanelView: View {
             Button(action: {
                 companionManager.triggerOnboarding()
             }) {
-                Text("Launch StudioMate")
+                Text("Launch Here.")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(DS.Colors.textOnAccent)
                     .frame(maxWidth: .infinity)
@@ -592,7 +606,7 @@ struct CompanionPanelView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "power")
                         .font(.system(size: 11, weight: .medium))
-                    Text("Quit StudioMate")
+                    Text("Quit Here.")
                         .font(.system(size: 12, weight: .medium))
                 }
                 .foregroundColor(DS.Colors.textTertiary)

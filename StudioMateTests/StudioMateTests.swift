@@ -1,13 +1,7 @@
-//
-//  StudioMateTests.swift
-//  StudioMateTests
-//
-//  Created by thorfinn on 3/2/26.
-//
-
 import Testing
 @testable import StudioMate
 
+@MainActor
 struct StudioMateTests {
 
     @Test func firstPermissionRequestUsesSystemPromptOnly() async throws {

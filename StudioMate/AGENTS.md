@@ -1,6 +1,6 @@
-# StudioMate App Target
+# Here. app target (Xcode name: StudioMate)
 
-This target contains the macOS menu bar application.
+This target contains the macOS menu bar application. User-visible strings should say **Here.** even though files still use the StudioMate name.
 
 ## Focus
 

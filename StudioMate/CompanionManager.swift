@@ -59,13 +59,18 @@ final class CompanionManager: ObservableObject {
     let buddyDictationManager = BuddyDictationManager()
     let globalPushToTalkShortcutMonitor = GlobalPushToTalkShortcutMonitor()
     let overlayWindowManager = OverlayWindowManager()
-    // Response text is now displayed inline on the cursor overlay via
-    // streamingResponseText, so no separate response overlay manager is needed.
+
+    @Published private(set) var workerNeedsConfiguration = false
 
     /// Base URL for the Cloudflare Worker proxy. All API requests route
     /// through this so keys never ship in the app binary.
-    private static let workerBaseURL = AppBundleConfiguration.stringValue(forKey: "WorkerBaseURL")
-        ?? "https://your-worker-name.your-subdomain.workers.dev"
+    private static let placeholderWorkerHost = "your-worker-name.your-subdomain.workers.dev"
+
+    private static let workerBaseURL: String = {
+        let raw = AppBundleConfiguration.stringValue(forKey: "WorkerBaseURL")
+            ?? "https://\(placeholderWorkerHost)"
+        return raw.hasSuffix("/") ? String(raw.dropLast()) : raw
+    }()
 
     private lazy var creativeCoachAPI: CreativeCoachAPI = {
         return CreativeCoachAPI(proxyURL: "\(Self.workerBaseURL)/chat", model: selectedModel)
@@ -153,13 +158,16 @@ final class CompanionManager: ObservableObject {
 
     func start() {
         refreshAllPermissions()
-        print("🔑 StudioMate start — accessibility: \(hasAccessibilityPermission), screen: \(hasScreenRecordingPermission), mic: \(hasMicrophonePermission), screenContent: \(hasScreenContentPermission), onboarded: \(hasCompletedOnboarding)")
+        workerNeedsConfiguration = Self.workerBaseURL.contains(Self.placeholderWorkerHost)
+        if workerNeedsConfiguration {
+            print("⚠️ Here. WorkerBaseURL is still the placeholder. Set StudioMate/Info.plist before chat, TTS, or transcription will work.")
+        }
+        print("🔑 Here. start — accessibility: \(hasAccessibilityPermission), screen: \(hasScreenRecordingPermission), mic: \(hasMicrophonePermission), screenContent: \(hasScreenContentPermission), onboarded: \(hasCompletedOnboarding)")
         startPermissionPolling()
         bindVoiceStateObservation()
         bindAudioPowerLevel()
         bindShortcutTransitions()
-        // Eagerly touch the Claude API so its TLS warmup handshake completes
-        // well before the onboarding demo fires at ~40s into the video.
+        // Warm the Worker connection before the first push-to-talk.
         _ = creativeCoachAPI
 
         // If the user already completed onboarding AND all permissions are

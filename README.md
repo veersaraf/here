@@ -16,7 +16,7 @@ Here. is tuned for hands-on creative work, with three specialization lanes built
 | --- | --- | --- |
 | **Video Editing** | Cuts, pacing, keyframes, masking, color, audio, export | Premiere Pro, Final Cut Pro, DaVinci Resolve, CapCut |
 | **UI Design** | Hierarchy, spacing, typography, components, flows, prototyping | Figma, Framer, Sketch |
-| **Blender & 3D** | Modeling, lighting, materials, cameras, motion, render polish | Blender, Eevee, Cycles, Geometry Nodes |
+| **Blender** | Modeling, lighting, materials, cameras, motion, render polish | Blender, Eevee, Cycles, Geometry Nodes |
 
 Each lane changes how the coach reasons about your screen — see [`StudioMate/CreativeFocus.swift`](StudioMate/CreativeFocus.swift).
 
@@ -37,7 +37,7 @@ A single push-to-talk gesture drives the whole loop:
 | App | SwiftUI + AppKit menu bar app for macOS (no dock icon) |
 | Push-to-talk | Global, listen-only `CGEvent` tap for modifier-only shortcuts |
 | Screen capture | ScreenCaptureKit (`SCScreenshotManager`), all connected displays |
-| Speech-to-text | AssemblyAI streaming, with OpenAI and Apple Speech fallbacks in the codebase |
+| Speech-to-text | AssemblyAI streaming (default). Apple Speech is in the tree as a fallback if you change `VoiceTranscriptionProvider`. |
 | Coach response | Streaming vision chat (Anthropic Messages API) via a Cloudflare Worker |
 | Text-to-speech | ElevenLabs, through the same Worker |
 | Overlay | Transparent cursor companion that animates to pointed elements |
@@ -70,25 +70,16 @@ NOTICE.md                    # attribution for the inherited MIT base
 ```bash
 cd worker
 npm install
+npx wrangler login
+npx wrangler deploy
 npx wrangler secret put ANTHROPIC_API_KEY
 npx wrangler secret put ASSEMBLYAI_API_KEY
 npx wrangler secret put ELEVENLABS_API_KEY
 ```
 
-Set your (non-secret) ElevenLabs voice ID in [`worker/wrangler.toml`](worker/wrangler.toml):
+A public ElevenLabs voice ID already lives in [`worker/wrangler.toml`](worker/wrangler.toml) as `ELEVENLABS_VOICE_ID`. Change it there if you want a different voice.
 
-```toml
-[vars]
-ELEVENLABS_VOICE_ID = "your-voice-id-here"
-```
-
-Then deploy:
-
-```bash
-npx wrangler deploy
-```
-
-For local development, `npx wrangler dev` serves the Worker at `http://localhost:8787`.
+For local development, put the same three keys in `worker/.dev.vars` and run `npx wrangler dev` (serves `http://localhost:8787`). Dashboard secrets are not injected into local `wrangler dev`.
 
 ### 2. Point the app at your Worker
 
@@ -110,9 +101,10 @@ On first run, Here. requests:
 
 - **Microphone** — to hear your questions
 - **Accessibility** — to run the global push-to-talk shortcut
-- **Screen Recording** — to see and point at your screen
+- **Screen Recording** — to capture the display
+- **Screen Content** — the ScreenCaptureKit picker; required before the coach can see your screen
 
-Screen capture only happens while a push-to-talk request is active.
+Screenshots are taken after you release the hotkey and a transcript is ready, plus once during the first-run pointing demo. They are not captured continuously.
 
 ## Landing page
 

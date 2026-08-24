@@ -1,12 +1,13 @@
 /**
- * StudioMate Proxy Worker
+ * Here. proxy Worker.
  *
- * Proxies requests to Claude and ElevenLabs APIs so the app never
- * ships with raw API keys. Keys are stored as Cloudflare secrets.
+ * Proxies requests to Anthropic, ElevenLabs, and AssemblyAI so the app
+ * never ships with raw API keys. Keys are stored as Cloudflare secrets.
  *
  * Routes:
- *   POST /chat  → Anthropic Messages API (streaming)
- *   POST /tts   → ElevenLabs TTS API
+ *   POST /chat              → Anthropic Messages API (streaming)
+ *   POST /tts               → ElevenLabs TTS API
+ *   POST /transcribe-token  → AssemblyAI streaming token
  */
 
 interface Env {

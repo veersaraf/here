@@ -419,10 +419,10 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StudioMate/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = StudioMate;
-				INFOPLIST_KEY_CFBundleName = StudioMate;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSScreenCaptureUsageDescription = "StudioMate needs screen access so it can point at tools and teach inside your creative apps.";
+				INFOPLIST_KEY_CFBundleDisplayName = "Here.";
+				INFOPLIST_KEY_CFBundleName = "Here.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Veer Saraf";
+				INFOPLIST_KEY_NSScreenCaptureUsageDescription = "Here. needs screen access so it can point at tools and teach inside your creative apps.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -457,10 +457,10 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StudioMate/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = StudioMate;
-				INFOPLIST_KEY_CFBundleName = StudioMate;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSScreenCaptureUsageDescription = "StudioMate needs screen access so it can point at tools and teach inside your creative apps.";
+				INFOPLIST_KEY_CFBundleDisplayName = "Here.";
+				INFOPLIST_KEY_CFBundleName = "Here.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Veer Saraf";
+				INFOPLIST_KEY_NSScreenCaptureUsageDescription = "Here. needs screen access so it can point at tools and teach inside your creative apps.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

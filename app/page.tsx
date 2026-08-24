@@ -45,19 +45,19 @@ export default function Home() {
         </section>
 
         <section className="focus-block" aria-label="Creative focuses">
-          <p className="focus-lead">Fine-tuned specially for</p>
+          <p className="focus-lead">Specialized for</p>
           <div className="focus-list">
             <p>
               <span>Video Editing</span>
-              <em>Final Cut Pro, DaVinci Resolve</em>
-            </p>
-            <p>
-              <span>Blender &amp; 3D</span>
-              <em>Blender, Eevee, Cycles</em>
+              <em>Premiere Pro, Final Cut Pro, DaVinci Resolve, CapCut</em>
             </p>
             <p>
               <span>UI Design</span>
-              <em>Figma</em>
+              <em>Figma, Framer, Sketch</em>
+            </p>
+            <p>
+              <span>Blender</span>
+              <em>Eevee, Cycles, Geometry Nodes</em>
             </p>
           </div>
         </section>

@@ -1,4 +1,4 @@
-StudioMate is a derivative work built from the open-source Clicky codebase:
+Here. is a derivative work built from the open-source Clicky codebase:
 
 - Original project: [farzaa/clicky](https://github.com/farzaa/clicky)
 - Original license: MIT
