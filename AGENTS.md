@@ -19,19 +19,19 @@ The product is intentionally specialized around:
 
 ## Key Files
 
-- [StudioMate/StudioMateApp.swift](/Users/veersaraf/Desktop/Codex/StudioMate/StudioMateApp.swift): app entry
-- [StudioMate/CompanionManager.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CompanionManager.swift): main orchestration and prompting
-- [StudioMate/CompanionPanelView.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CompanionPanelView.swift): menu bar panel UI
-- [StudioMate/OverlayWindow.swift](/Users/veersaraf/Desktop/Codex/StudioMate/OverlayWindow.swift): cursor overlay and pointing animation
-- [StudioMate/CreativeFocus.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CreativeFocus.swift): specialization lanes
-- [StudioMate/CreativeCoachAPI.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CreativeCoachAPI.swift): streaming vision-chat client
-- [worker/src/index.ts](/Users/veersaraf/Desktop/Codex/worker/src/index.ts): proxy routes
+- [StudioMate/StudioMateApp.swift](StudioMate/StudioMateApp.swift): app entry
+- [StudioMate/CompanionManager.swift](StudioMate/CompanionManager.swift): main orchestration and prompting
+- [StudioMate/CompanionPanelView.swift](StudioMate/CompanionPanelView.swift): menu bar panel UI
+- [StudioMate/OverlayWindow.swift](StudioMate/OverlayWindow.swift): cursor overlay and pointing animation
+- [StudioMate/CreativeFocus.swift](StudioMate/CreativeFocus.swift): specialization lanes
+- [StudioMate/CreativeCoachAPI.swift](StudioMate/CreativeCoachAPI.swift): streaming vision-chat client
+- [worker/src/index.ts](worker/src/index.ts): proxy routes
 
 ## Build Notes
 
-- Open the project in Xcode: [StudioMate.xcodeproj](/Users/veersaraf/Desktop/Codex/StudioMate.xcodeproj)
+- Open the project in Xcode: [StudioMate.xcodeproj](StudioMate.xcodeproj)
 - Prefer not to run `xcodebuild` from the terminal because TCC permissions are easier to preserve when running directly from Xcode
-- Worker base URL is configured in [StudioMate/Info.plist](/Users/veersaraf/Desktop/Codex/StudioMate/Info.plist)
+- Worker base URL is configured in [StudioMate/Info.plist](StudioMate/Info.plist)
 
 ## Provider Notes
 

@@ -13,7 +13,7 @@ export default function Home() {
 
           <a
             className="github-link"
-            href="https://github.com/veersaraf/HereApp"
+            href="https://github.com/veersaraf/here"
             target="_blank"
             rel="noreferrer"
             aria-label="Open GitHub repository"
@@ -52,8 +52,8 @@ export default function Home() {
               <em>Final Cut Pro, DaVinci Resolve</em>
             </p>
             <p>
-              <span>Graphic Design</span>
-              <em>Blender, After Effects</em>
+              <span>Blender &amp; 3D</span>
+              <em>Blender, Eevee, Cycles</em>
             </p>
             <p>
               <span>UI Design</span>

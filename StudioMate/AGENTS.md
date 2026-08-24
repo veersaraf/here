@@ -6,11 +6,11 @@ This target contains the macOS menu bar application.
 
 - Keep the cursor companion smooth and trustworthy
 - Keep the panel compact, fast, and creator-focused
-- Maintain the three specialization lanes in [CreativeFocus.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CreativeFocus.swift)
+- Maintain the three specialization lanes in [CreativeFocus.swift](CreativeFocus.swift)
 
 ## Most Important Files
 
-- [CompanionManager.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CompanionManager.swift)
-- [CompanionPanelView.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CompanionPanelView.swift)
-- [OverlayWindow.swift](/Users/veersaraf/Desktop/Codex/StudioMate/OverlayWindow.swift)
-- [CreativeFocus.swift](/Users/veersaraf/Desktop/Codex/StudioMate/CreativeFocus.swift)
+- [CompanionManager.swift](CompanionManager.swift)
+- [CompanionPanelView.swift](CompanionPanelView.swift)
+- [OverlayWindow.swift](OverlayWindow.swift)
+- [CreativeFocus.swift](CreativeFocus.swift)
