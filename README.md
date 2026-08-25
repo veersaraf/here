@@ -1,71 +1,14 @@
 # Here.
 
-**A macOS-native, screen-aware teacher that lives in your menu bar.**
+A macOS menu-bar teacher. Hold **Control + Option**, ask out loud, and it looks at your screen, talks back, and points at the next control to use.
 
-Hold `Control + Option`, ask for help out loud, and Here. teaches you inside the app you are already using. It can see your screen, talk back, and fly a cursor to point directly at the next control you should touch.
+Specialized for video editing, UI design, and Blender. The Xcode target is still named `StudioMate` — same app.
 
-The goal is simple: less passive watching, more guided doing.
+**Live:** [here-app-three.vercel.app](https://here-app-three.vercel.app)
 
----
+## Run it
 
-## What it's for
-
-Here. is tuned for hands-on creative work, with three specialization lanes built into the app:
-
-| Lane | Focus | Typical tools |
-| --- | --- | --- |
-| **Video Editing** | Cuts, pacing, keyframes, masking, color, audio, export | Premiere Pro, Final Cut Pro, DaVinci Resolve, CapCut |
-| **UI Design** | Hierarchy, spacing, typography, components, flows, prototyping | Figma, Framer, Sketch |
-| **Blender** | Modeling, lighting, materials, cameras, motion, render polish | Blender, Eevee, Cycles, Geometry Nodes |
-
-Each lane changes how the coach reasons about your screen — see [`StudioMate/CreativeFocus.swift`](StudioMate/CreativeFocus.swift).
-
-## How it works
-
-A single push-to-talk gesture drives the whole loop:
-
-1. **Listen** — hold `Control + Option` and speak. Audio is streamed to transcription in real time.
-2. **See** — on release, Here. captures your screen(s) via ScreenCaptureKit. Screenshots are only taken when you ask for help.
-3. **Think** — the transcript plus screenshots are sent to a vision model through a Cloudflare Worker proxy, which streams the response back.
-4. **Speak** — the answer is played aloud with text-to-speech, written for the ear rather than the eye.
-5. **Point** — if the model emits a `[POINT:x,y:label]` tag, a cursor overlay flies to that on-screen element, across multiple displays if needed.
-
-## Architecture
-
-| Concern | Implementation |
-| --- | --- |
-| App | SwiftUI + AppKit menu bar app for macOS (no dock icon) |
-| Push-to-talk | Global, listen-only `CGEvent` tap for modifier-only shortcuts |
-| Screen capture | ScreenCaptureKit (`SCScreenshotManager`), all connected displays |
-| Speech-to-text | AssemblyAI streaming (default). Apple Speech is in the tree as a fallback if you change `VoiceTranscriptionProvider`. |
-| Coach response | Streaming vision chat (Anthropic Messages API) via a Cloudflare Worker |
-| Text-to-speech | ElevenLabs, through the same Worker |
-| Overlay | Transparent cursor companion that animates to pointed elements |
-
-The Worker is a thin proxy so the app never ships with raw API keys — every provider key stays as a Cloudflare secret.
-
-> **A note on naming:** the public product is **Here.** The source tree still uses the earlier `StudioMate` name for the Xcode target and most file names. Renaming the target is cosmetic and deferred; treat `StudioMate` and `Here.` as the same thing.
-
-## Repository layout
-
-```text
-StudioMate/                  # macOS app source (SwiftUI + AppKit)
-  StudioMateApp.swift        #   app entry
-  CompanionManager.swift     #   orchestration, prompting, POINT parsing
-  CompanionPanelView.swift   #   menu bar panel UI
-  OverlayWindow.swift        #   cursor overlay and pointing animation
-  CreativeFocus.swift        #   specialization lanes
-  CreativeCoachAPI.swift     #   streaming vision-chat client
-  ...                        #   transcription providers, capture, TTS, etc.
-worker/                      # Cloudflare Worker proxy
-  src/index.ts               #   /chat, /tts, /transcribe-token routes
-app/                         # Next.js landing page
-NOTICE.md                    # attribution for the inherited MIT base
-```
-
-## Getting started
-
-### 1. Deploy the Worker
+You need a Cloudflare Worker in front of Anthropic, AssemblyAI, and ElevenLabs. Keys stay on the Worker; the app only stores the Worker URL.
 
 ```bash
 cd worker
@@ -77,48 +20,25 @@ npx wrangler secret put ASSEMBLYAI_API_KEY
 npx wrangler secret put ELEVENLABS_API_KEY
 ```
 
-A public ElevenLabs voice ID already lives in [`worker/wrangler.toml`](worker/wrangler.toml) as `ELEVENLABS_VOICE_ID`. Change it there if you want a different voice.
+Voice ID is already in [`worker/wrangler.toml`](worker/wrangler.toml). For local Worker dev, put those three keys in `worker/.dev.vars` and run `npx wrangler dev`.
 
-For local development, put the same three keys in `worker/.dev.vars` and run `npx wrangler dev` (serves `http://localhost:8787`). Dashboard secrets are not injected into local `wrangler dev`.
-
-### 2. Point the app at your Worker
-
-Set `WorkerBaseURL` in [`StudioMate/Info.plist`](StudioMate/Info.plist) to your deployed Worker URL (or `http://localhost:8787` while developing). This single value configures the `/chat`, `/tts`, and `/transcribe-token` routes.
-
-### 3. Build and run in Xcode
+Then set `WorkerBaseURL` in [`StudioMate/Info.plist`](StudioMate/Info.plist) to the deployed URL (or `http://localhost:8787`). If you leave the placeholder, the menu panel will say so and chat/voice will not work.
 
 ```bash
 open StudioMate.xcodeproj
 ```
 
-Then select the `StudioMate` scheme, set your signing team, and run with `Cmd + R`.
+Select the `StudioMate` scheme, set your signing team, Cmd+R. Prefer Xcode over `xcodebuild` so TCC permissions stick.
 
-> Prefer running from Xcode over `xcodebuild` — TCC (microphone, screen recording, accessibility) permissions are easier to preserve when launching directly.
-
-## Permissions
-
-On first run, Here. requests:
-
-- **Microphone** — to hear your questions
-- **Accessibility** — to run the global push-to-talk shortcut
-- **Screen Recording** — to capture the display
-- **Screen Content** — the ScreenCaptureKit picker; required before the coach can see your screen
-
-Screenshots are taken after you release the hotkey and a transcript is ready, plus once during the first-run pointing demo. They are not captured continuously.
+First run asks for microphone, accessibility, screen recording, and screen content. Screenshots happen after you release the hotkey (and once during the first-run pointing demo), not continuously.
 
 ## Landing page
-
-The marketing site under [`app/`](app/) is a small Next.js app:
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Attribution
-
-Here. is a substantial derivative of [farzaa/clicky](https://github.com/farzaa/clicky), which is MIT-licensed. The original copyright is preserved in [LICENSE](LICENSE), and a short attribution note lives in [NOTICE.md](NOTICE.md).
-
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. Substantial derivative of [farzaa/clicky](https://github.com/farzaa/clicky) — see [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
